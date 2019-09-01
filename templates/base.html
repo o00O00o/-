@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'logos/logo.ico' %}">
+
+    <title>
+        Sperm Bank Surveillance - {% block title %} Welcome! {% endblock %}
+    </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+     {% block css_block %}{% endblock %}
+</head>
+<br>
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'logos/logo2.ico' %}" alt="Surveillance">
+        </a>
+    </div>
+    <div>
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{% url 'user:about' %}" class="nav-link">About</a></li>
+            {% if request.session.is_login %}
+            <li class="nav-item"><a href="{% url 'user:account' %}" class="nav-link">Account</a></li>
+            <li class="nav-item"><a href="{% url 'surveillance:service' %}" class="nav-link">Service</a></li>
+            <li class="nav-item"><a href="{% url 'user:logout' %}" class="nav-link">Logout</a></li>
+            {% else %}
+            <li class="nav-item"><a href="{% url 'user:register' %}" class="nav-link">Register</a></li>
+            <li class="nav-item"><a href="{% url 'user:login' %}" class="nav-link">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<br />
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+            {% block body_block %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container text-center">
+        &copy; Sperm Bank Surveilliance Ltd.<br/>
+        UESTC
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+    <script src="{% static 'bootstrap/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

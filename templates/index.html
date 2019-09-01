@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title_block %}Index{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron">
+         <div class="container">
+            <h1><strong>Welcome to use the surveillance system</strong></h1>
+            <p><b>You are able to obtain the data from sperm bank by this system.<br />
+            You need to login to enjoy our service.<br />
+            If you do not have an account yet, please register first.</b></p>
+             {% if user.is_authenticated %}
+             <p><a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Get Started</a></p>
+             {% else %}
+             <p><a class="btn btn-primary btn-lg" href="{% url 'user:login' %}" role="button">Get Started</a></p>
+             {% endif %}
+         </div>
+    </div>
+{% endblock %}
